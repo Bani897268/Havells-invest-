@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Havells Invest | Smart Investment Platform</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#0e1b14;color:#eafff2}
+    header{padding:20px;background:#0b3d2e;display:flex;justify-content:space-between;align-items:center}
+    header h1{color:#39ff9a}
+    nav a{color:#caffea;margin-left:20px;text-decoration:none;font-weight:500}
+    .hero{padding:60px 20px;text-align:center}
+    .hero h2{font-size:2.2rem;color:#39ff9a}
+    .hero p{max-width:600px;margin:15px auto;color:#b8ffe0}
+    .btn{display:inline-block;margin-top:20px;padding:12px 28px;background:#39ff9a;color:#083322;border-radius:30px;font-weight:600;text-decoration:none}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:40px}
+    .card{background:#122a1f;border-radius:20px;padding:25px;box-shadow:0 0 25px rgba(57,255,154,.15)}
+    .card h3{color:#39ff9a;margin-bottom:10px}
+
+    .dashboard{padding:40px}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+    .stat{background:#0b3d2e;padding:20px;border-radius:18px;text-align:center}
+    .stat span{font-size:1.5rem;color:#39ff9a}
+
+    .invest-box{margin-top:40px;background:#122a1f;padding:30px;border-radius:20px}
+    input,select{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none}
+    button{width:100%;padding:12px;border:none;border-radius:12px;background:#39ff9a;color:#083322;font-weight:700;cursor:pointer}
+
+    footer{text-align:center;padding:20px;background:#0b3d2e;color:#9cffd7}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Havells Invest</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Invest</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Grow Your Money Smarter 🚀</h2>
+  <p>A modern demo investment platform designed for learning & presentation purposes.</p>
+  <a class="btn" href="#dashboard">Get Started</a>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <h3>Secure System</h3>
+    <p>Advanced UI with encrypted-style demo logic.</p>
+  </div>
+  <div class="card">
+    <h3>USDT / INR</h3>
+    <p>Dual currency investment simulation.</p>
+  </div>
+  <div class="card">
+    <h3>Live Dashboard</h3>
+    <p>Real-time balance calculation (demo).</p>
+  </div>
+</section>
+
+<section id="dashboard" class="dashboard">
+  <h2 style="color:#39ff9a;margin-bottom:20px">User Dashboard</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <div>Total Balance</div>
+      <span id="balance">₹ 0</span>
+    </div>
+    <div class="stat">
+      <div>Total Invested</div>
+      <span id="invested">₹ 0</span>
+    </div>
+    <div class="stat">
+      <div>Profit (Demo)</div>
+      <span id="profit">₹ 0</span>
+    </div>
+  </div>
+
+  <div class="invest-box">
+    <h3 style="color:#39ff9a">Make an Investment</h3>
+    <select id="currency">
+      <option value="INR">INR</option>
+      <option value="USDT">USDT</option>
+    </select>
+    <input type="number" id="amount" placeholder="Enter amount" />
+    <button onclick="invest()">Invest Now</button>
+  </div>
+</section>
+
+<footer>
+  © 2026 Havells Invest | Demo Platform Only
+</footer>
+
+<script>
+  let balance = 0;
+  let invested = 0;
+
+  function invest(){
+    const amt = Number(document.getElementById('amount').value);
+    if(!amt || amt<=0){alert('Enter valid amount');return}
+    invested += amt;
+    balance += amt * 1.1; // demo profit logic
+
+    document.getElementById('invested').innerText = '₹ ' + invested;
+    document.getElementById('balance').innerText = '₹ ' + balance.toFixed(2);
+    document.getElementById('profit').innerText = '₹ ' + (balance-invested).toFixed(2);
+
+    document.getElementById('amount').value='';
+  }
+</script>
+
+</body>
+</html>
